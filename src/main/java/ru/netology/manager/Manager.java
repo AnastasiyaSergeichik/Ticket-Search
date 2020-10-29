@@ -1,19 +1,17 @@
 package ru.netology.manager;
 
+import lombok.AllArgsConstructor;
 import ru.netology.domain.Ticket;
 import ru.netology.repository.TicketRepository;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
+@AllArgsConstructor
 public class Manager {
     private TicketRepository repository;
 
-    public Manager(TicketRepository repository) {
-
-        this.repository = repository;
-    }
-
-    public Ticket[] findAll(String from, String to) {
+    public Ticket[] findAll(String from, String to, Comparator<Ticket> comparator) {
         Ticket[] newList = new Ticket[0];
         for (Ticket ticket : repository.getAll()) {
             if (ticket.getAirportArrival().equals(to) && ticket.getAirportDeparture().equals(from)) {
@@ -23,7 +21,7 @@ public class Manager {
                 newList = tmp;
             }
         }
-        Arrays.sort(newList);
+        Arrays.sort(newList, comparator);
         return newList;
     }
 }
