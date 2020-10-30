@@ -23,9 +23,10 @@ public class Manager {
                 newList = tmp;
             }
         }
-                   Arrays.sort(newList);
-            return newList;
-        }
+        Arrays.sort(newList);
+        return newList;
+    }
+
     public Ticket[] findFromTo(String from, String to) {
         Ticket[] newList = new Ticket[0];
         for (Ticket ticket : repository.getAll()) {
