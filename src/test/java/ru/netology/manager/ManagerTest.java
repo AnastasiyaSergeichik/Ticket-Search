@@ -64,7 +64,7 @@ public class ManagerTest {
     }
 
     @Test
-    void shouldNotFindNothing() {
+    void shouldNotFind() {
         Ticket[] expected = {};
         Ticket[] actual = manager.findFromTo("", "", new TicketComparator());
         assertArrayEquals(expected, actual);
