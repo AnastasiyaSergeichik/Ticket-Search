@@ -48,6 +48,7 @@ public class ManagerTest {
         Ticket[] actual = manager.findAll("DME", "TOF", new TicketComparator());
         assertArrayEquals(expected, actual);
     }
+
     @Test
     void shouldFindFrom() {
         Ticket[] expected = {ticket4, ticket3, ticket2};

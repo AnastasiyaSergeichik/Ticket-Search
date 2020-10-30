@@ -24,6 +24,7 @@ public class Manager {
         Arrays.sort(newList, comparator);
         return newList;
     }
+
     public Ticket[] findFromTo(String from, String to, Comparator<Ticket> comparator) {
         Ticket[] newList = new Ticket[0];
         for (Ticket ticket : repository.getAll()) {
