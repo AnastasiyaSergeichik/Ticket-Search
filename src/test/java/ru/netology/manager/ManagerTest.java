@@ -37,7 +37,7 @@ public class ManagerTest {
     @Test
     void shouldFindIndividualTicketQuick() {
         Ticket[] expected = {ticket1};
-        Ticket[] actual = manager.findAll("VKO", "KZN", new TicketComparator());
+        Ticket[] actual = manager.findAll("SVO", "KZN", new TicketComparator());
         assertArrayEquals(expected, actual);
 
     }
@@ -46,6 +46,26 @@ public class ManagerTest {
     void shouldNotFindTicket() {
         Ticket[] expected = {};
         Ticket[] actual = manager.findAll("DME", "TOF", new TicketComparator());
+        assertArrayEquals(expected, actual);
+    }
+    @Test
+    void shouldFindFrom() {
+        Ticket[] expected = {ticket4, ticket3, ticket2};
+        Ticket[] actual = manager.findFromTo("VKO", "", new TicketComparator());
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldFindTo() {
+        Ticket[] expected = {ticket1, ticket4, ticket3, ticket2};
+        Ticket[] actual = manager.findFromTo("", "KZN", new TicketComparator());
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldNotFindNothing() {
+        Ticket[] expected = {};
+        Ticket[] actual = manager.findFromTo("", "", new TicketComparator());
         assertArrayEquals(expected, actual);
     }
 }
