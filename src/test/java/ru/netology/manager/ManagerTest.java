@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import ru.netology.domain.Ticket;
 import ru.netology.repository.TicketRepository;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ManagerTest {
     private TicketRepository ticketRepository = new TicketRepository();
@@ -47,4 +47,27 @@ public class ManagerTest {
         Ticket[] actual = manager.findAll("DME", "TOF");
         assertArrayEquals(expected, actual);
     }
+
+    @Test
+    void shouldFindFrom() {
+        Ticket[] expected = {ticket3, ticket2, ticket4};
+        Ticket[] actual = manager.findFromTo("VKO", "");
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldFindTo() {
+        Ticket[] expected = {ticket1, ticket3, ticket2, ticket4};
+        Ticket[] actual = manager.findFromTo("", "KZN");
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldNotFindNothing() {
+        Ticket[] expected = {};
+        Ticket[] actual = manager.findFromTo("", "");
+        assertArrayEquals(expected, actual);
+    }
 }
+
+
