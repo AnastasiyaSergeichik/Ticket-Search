@@ -35,9 +35,9 @@ public class ManagerTest {
     }
 
     @Test
-    void shouldFindIndividualTicket() {
+    void shouldFindIndividualTicketQuick() {
         Ticket[] expected = {ticket1};
-        Ticket[] actual = manager.findAll("SVO", "KZN", new TicketComparator());
+        Ticket[] actual = manager.findAll("VKO", "KZN", new TicketComparator());
         assertArrayEquals(expected, actual);
 
     }
